@@ -1,0 +1,32 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post }
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+const formatter = new Intl.DateTimeFormat('it-IT', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<Base title={`${post.data.title} — Pietro Noli`} description={post.data.description}>
+  <section class="section">
+    <div class="wrap" style="max-width:680px;">
+      <p class="mono" style="font-size:0.8rem; color:var(--signal-blue); margin-bottom:0.6rem;">
+        {formatter.format(post.data.pubDate)}
+      </p>
+      <h1 style="margin-bottom:1.5rem;">{post.data.title}</h1>
+      <div class="prose" style="color:var(--text-secondary); font-size:1.05rem; line-height:1.75; display:grid; gap:1.1rem;">
+        <Content />
+      </div>
+      <hr class="hairline" style="margin:3rem 0;" />
+      <a class="btn" href="/blog">← Tutti gli articoli</a>
+    </div>
+  </section>
+</Base>

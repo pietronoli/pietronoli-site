@@ -1,0 +1,130 @@
+---
+import Base from '../layouts/Base.astro';
+
+const stats = [
+  { value: '27', label: 'anni di esperienza in business intelligence' },
+  { value: '11', label: 'certificazioni conseguite' },
+  { value: '420+', label: 'sessioni di training erogate' },
+  { value: '10+', label: 'nazioni, 2 continenti' }
+];
+
+const services = [
+  {
+    tag: 'Nuovo focus',
+    title: 'AI enablement',
+    text: 'Copilot aziendale, agenti e interrogazione in linguaggio naturale sui modelli semantici già in produzione. Non si parte da zero: si costruisce sopra alla BI esistente.',
+    href: '/servizi#ai-enablement'
+  },
+  {
+    tag: 'Eredità',
+    title: 'BI consulting & development',
+    text: 'Analisi, implementazione, tuning e manutenzione su IBM Cognos e Power BI. Time & material o a corpo, come preferisce il progetto.',
+    href: '/servizi#bi-consulting'
+  },
+  {
+    tag: 'Docenza',
+    title: 'Formazione & training',
+    text: 'Corsi certificati per system integrator, aziende ed enti, in italiano e inglese, in presenza o da remoto.',
+    href: '/servizi#formazione'
+  }
+];
+---
+
+<Base
+  title="Pietro Noli — Business intelligence & AI consultant, Milano"
+  description="27 anni di business intelligence. Oggi guido l'adozione dell'AI in azienda. Consulenza, sviluppo e formazione su IBM Cognos, Power BI e AI aziendale."
+>
+  <section class="section">
+    <div class="wrap grid grid--2" style="align-items:center;">
+      <div>
+        <p class="eyebrow">Milano — consulente indipendente</p>
+        <h1>27 anni di business intelligence.<br />Oggi guido l'adozione dell'AI in azienda.</h1>
+        <p style="margin-top:1.25rem; color:var(--text-secondary); font-size:1.1rem;">
+          Ingegnere informatico, docente ufficiale IBM per i corsi Cognos in Italia per quasi vent'anni,
+          oggi Microsoft Certified Trainer. Porto in ogni progetto AI la stessa disciplina con cui per
+          27 anni ho reso affidabili i numeri delle aziende.
+        </p>
+        <div style="display:flex; gap:1rem; margin-top:2rem; flex-wrap:wrap;">
+          <a class="btn btn--solid" href="/contatti">Prenota una call</a>
+          <a class="btn" href="/servizi">Scopri i servizi</a>
+        </div>
+      </div>
+      <div class="panel">
+        <p class="eyebrow">Percorso in breve</p>
+        <ul style="list-style:none; margin:0; padding:0; display:grid; gap:0.9rem;">
+          <li class="mono" style="font-size:0.92rem; display:flex; justify-content:space-between; border-bottom:var(--line-width) solid var(--line); padding-bottom:0.7rem;">
+            <span>1993</span><span style="color:var(--text-secondary);">Laurea, Politecnico di Milano</span>
+          </li>
+          <li class="mono" style="font-size:0.92rem; display:flex; justify-content:space-between; border-bottom:var(--line-width) solid var(--line); padding-bottom:0.7rem;">
+            <span>1999</span><span style="color:var(--text-secondary);">Specializzazione IBM Cognos</span>
+          </li>
+          <li class="mono" style="font-size:0.92rem; display:flex; justify-content:space-between; border-bottom:var(--line-width) solid var(--line); padding-bottom:0.7rem;">
+            <span>2007</span><span style="color:var(--text-secondary);">Docente ufficiale IBM</span>
+          </li>
+          <li class="mono" style="font-size:0.92rem; display:flex; justify-content:space-between;">
+            <span>2026</span><span style="color:var(--text-secondary);">AI-103, Microsoft Certified Trainer</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hairline" />
+
+  <section class="section">
+    <div class="wrap">
+      <div class="grid grid--4">
+        {stats.map((s) => (
+          <div>
+            <p class="stat-value">{s.value}</p>
+            <p class="stat-label">{s.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <hr class="hairline" />
+
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">Servizi</p>
+      <h2 style="margin-bottom:2rem;">Dove posso essere utile</h2>
+      <div class="grid grid--3">
+        {services.map((s) => (
+          <a href={s.href} class="panel" style="display:block; text-decoration:none; color:inherit;">
+            <p class="mono" style="font-size:0.78rem; color:var(--signal-blue); margin:0 0 0.6rem;">{s.tag}</p>
+            <h3 style="margin-bottom:0.6rem;">{s.title}</h3>
+            <p style="font-size:0.95rem; color:var(--text-secondary);">{s.text}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <hr class="hairline" />
+
+  <section class="section">
+    <div class="wrap panel" style="max-width:960px;">
+      <p class="eyebrow">Case study</p>
+      <p style="font-size:1.3rem; font-weight:600; margin-bottom:0.5rem;">
+        Gruppo bancario, migrazione da reportistica manuale a modello BI centralizzato.
+      </p>
+      <p style="color:var(--text-secondary); margin-bottom:1.25rem;">
+        Tempi di produzione dei report ridotti del 40%, con eliminazione degli errori di
+        riconciliazione tra fonti.
+      </p>
+      <a class="btn" href="/case-studies">Vedi tutti i case study</a>
+    </div>
+  </section>
+
+  <section class="section--ink section">
+    <div class="wrap" style="text-align:center;">
+      <h2>Parliamo del tuo progetto</h2>
+      <p style="margin:1rem auto 2rem; color:var(--text-on-ink-secondary);">
+        Consulenza diretta, formazione per il tuo team, o un progetto AI da avviare sopra alla BI che hai già.
+      </p>
+      <a class="btn btn--solid" href="/contatti">Scrivimi</a>
+    </div>
+  </section>
+</Base>

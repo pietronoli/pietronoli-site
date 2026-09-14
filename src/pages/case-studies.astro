@@ -1,0 +1,66 @@
+---
+import Base from '../layouts/Base.astro';
+
+const cases = [
+  {
+    client: 'Gruppo bancario',
+    problem: 'Reportistica direzionale prodotta manualmente da più fonti, con frequenti errori di riconciliazione.',
+    solution: 'Migrazione a un modello BI centralizzato su IBM Cognos, con automazione dei flussi di consolidamento.',
+    result: 'Tempi di produzione dei report ridotti del 40%, errori di riconciliazione azzerati.'
+  },
+  {
+    client: 'Azienda manifatturiera',
+    problem: 'Team BI interno bloccato su un progetto Power BI con performance insufficienti in produzione.',
+    solution: 'Assessment tecnico, tuning del modello semantico e ridisegno delle misure DAX critiche.',
+    result: 'Tempi di caricamento dashboard ridotti dell\'ordine di 5 volte, adozione interna raddoppiata.'
+  },
+  {
+    client: 'System integrator internazionale',
+    problem: 'Necessità di formare rapidamente un team distribuito su più paesi sui moduli IBM Cognos.',
+    solution: 'Percorso di formazione certificata erogato in italiano e inglese, in presenza e da remoto.',
+    result: 'Team certificato in meno di due mesi, autonomo su progetti cliente successivi.'
+  }
+];
+---
+
+<Base
+  title="Case studies — Pietro Noli"
+  description="Progetti selezionati di consulenza e formazione business intelligence: problema, soluzione, risultato."
+>
+  <section class="section">
+    <div class="wrap" style="max-width:760px;">
+      <p class="eyebrow">Case studies</p>
+      <h1>Risultati, non solo loghi.</h1>
+      <p style="margin-top:1rem; color:var(--text-secondary); font-size:1.1rem;">
+        Una selezione di progetti, con il problema di partenza, l'intervento e il risultato misurato.
+        I nomi dei clienti restano riservati dove richiesto dagli accordi di riservatezza.
+      </p>
+    </div>
+  </section>
+
+  <hr class="hairline" />
+
+  <section class="section">
+    <div class="wrap" style="display:grid; gap:1.5rem;">
+      {cases.map((c) => (
+        <div class="panel">
+          <p class="eyebrow">{c.client}</p>
+          <div class="grid grid--3" style="margin-top:0.75rem;">
+            <div>
+              <p class="mono" style="font-size:0.78rem; color:var(--text-secondary); margin-bottom:0.4rem;">Problema</p>
+              <p style="font-size:0.95rem; color:var(--text-secondary);">{c.problem}</p>
+            </div>
+            <div>
+              <p class="mono" style="font-size:0.78rem; color:var(--text-secondary); margin-bottom:0.4rem;">Intervento</p>
+              <p style="font-size:0.95rem; color:var(--text-secondary);">{c.solution}</p>
+            </div>
+            <div>
+              <p class="mono" style="font-size:0.78rem; color:var(--signal-blue); margin-bottom:0.4rem;">Risultato</p>
+              <p style="font-size:0.95rem; font-weight:500;">{c.result}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+</Base>

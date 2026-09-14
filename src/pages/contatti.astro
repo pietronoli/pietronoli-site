@@ -1,0 +1,68 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="Contatti — Pietro Noli"
+  description="Scrivimi per un progetto di consulenza BI/AI, un percorso di formazione, o una call conoscitiva."
+>
+  <section class="section">
+    <div class="wrap grid grid--2" style="align-items:start;">
+      <div>
+        <p class="eyebrow">Contatti</p>
+        <h1 style="margin-bottom:1rem;">Parliamo del tuo progetto.</h1>
+        <p style="color:var(--text-secondary); margin-bottom:2rem;">
+          Compila il modulo con due righe di contesto: ti rispondo io direttamente, di solito entro
+          un giorno lavorativo.
+        </p>
+
+        <div class="panel">
+          <p class="eyebrow">Contatto diretto</p>
+          <p style="font-size:0.95rem; display:grid; gap:0.5rem;">
+            <span><strong>Email</strong> — <a href="mailto:pietro.noli@fastwebnet.it">pietro.noli@fastwebnet.it</a></span>
+            <span><strong>Telefono</strong> — <a href="tel:+393355659346">+39 335 5659 346</a></span>
+            <span><strong>LinkedIn</strong> — <a href="https://www.linkedin.com/in/pietronoli" target="_blank" rel="noopener">linkedin.com/in/pietronoli</a></span>
+            <span><strong>Sede</strong> — Milano, Italia</span>
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <!--
+          NOTA PER IL DEPLOY: questo form usa Formspree (formspree.io), un servizio
+          gratuito che inoltra via email i messaggi senza bisogno di un server proprio.
+          Le istruzioni per attivarlo sono nella guida DEPLOY.md, sezione "Attivare il
+          modulo di contatto".
+        -->
+        <form action="https://formspree.io/f/INSERISCI-QUI-IL-TUO-ID-FORMSPREE" method="POST" class="panel" style="display:grid; gap:1rem;">
+          <div>
+            <label for="nome" style="display:block; font-size:0.85rem; margin-bottom:0.35rem;">Nome</label>
+            <input id="nome" name="nome" type="text" required style="width:100%; padding:0.7rem; border:0.5px solid var(--line); border-radius:var(--radius); font-family:var(--font-body); font-size:0.95rem;" />
+          </div>
+          <div>
+            <label for="azienda" style="display:block; font-size:0.85rem; margin-bottom:0.35rem;">Azienda</label>
+            <input id="azienda" name="azienda" type="text" style="width:100%; padding:0.7rem; border:0.5px solid var(--line); border-radius:var(--radius); font-family:var(--font-body); font-size:0.95rem;" />
+          </div>
+          <div>
+            <label for="email" style="display:block; font-size:0.85rem; margin-bottom:0.35rem;">Email</label>
+            <input id="email" name="email" type="email" required style="width:100%; padding:0.7rem; border:0.5px solid var(--line); border-radius:var(--radius); font-family:var(--font-body); font-size:0.95rem;" />
+          </div>
+          <div>
+            <label for="tipo" style="display:block; font-size:0.85rem; margin-bottom:0.35rem;">Tipo di richiesta</label>
+            <select id="tipo" name="tipo" style="width:100%; padding:0.7rem; border:0.5px solid var(--line); border-radius:var(--radius); font-family:var(--font-body); font-size:0.95rem;">
+              <option>Progetto AI</option>
+              <option>Consulenza BI</option>
+              <option>Formazione</option>
+              <option>Altro</option>
+            </select>
+          </div>
+          <div>
+            <label for="messaggio" style="display:block; font-size:0.85rem; margin-bottom:0.35rem;">Messaggio</label>
+            <textarea id="messaggio" name="messaggio" rows="4" required style="width:100%; padding:0.7rem; border:0.5px solid var(--line); border-radius:var(--radius); font-family:var(--font-body); font-size:0.95rem; resize:vertical;"></textarea>
+          </div>
+          <button type="submit" class="btn btn--solid" style="justify-self:start;">Invia messaggio</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</Base>

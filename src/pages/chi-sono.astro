@@ -1,0 +1,67 @@
+---
+import Base from '../layouts/Base.astro';
+
+const timeline = [
+  { year: '1993', text: 'Laurea in ingegneria informatica, Politecnico di Milano.' },
+  { year: '1994', text: 'Inizio dell\'attività nel campo dell\'Information Technology.' },
+  { year: '1999', text: 'Specializzazione sui software IBM Cognos BI, a partire dalla versione 5.5.' },
+  { year: '2000', text: 'Dipendente Cognos Italia. Inizio dell\'attività di docente ufficiale Cognos per l\'Italia.' },
+  { year: '2005', text: 'Avvio dell\'attività come libero professionista dedicato ai software IBM Cognos.' },
+  { year: '2007', text: 'Diventa docente ufficiale IBM per i corsi Cognos in Italia.' },
+  { year: '2014', text: 'Fonda OneVision S.r.l., attiva nel campo dell\'Information & Communication Technology.' },
+  { year: '2020', text: 'Conseguimento delle certificazioni Tableau, ampliando la specializzazione oltre l\'ecosistema IBM.' },
+  { year: '2024', text: 'Certificazione PL-300 e avvio della transizione verso l\'ecosistema Microsoft Power BI e AI.' },
+  { year: '2025', text: 'Diventa Microsoft Certified Trainer. Conseguimento della certificazione AI-900.' },
+  { year: '2026', text: 'Certificazione AI-103. Riposizionamento come consulente ibrido BI/AI.' }
+];
+---
+
+<Base
+  title="Chi sono — Pietro Noli"
+  description="Ingegnere informatico, 27 anni di esperienza in business intelligence, docente ufficiale IBM per i corsi Cognos, oggi Microsoft Certified Trainer."
+>
+  <section class="section">
+    <div class="wrap" style="max-width:760px;">
+      <p class="eyebrow">Chi sono</p>
+      <h1 style="margin-bottom:1.5rem;">Un ingegnere che ha passato 27 anni a rendere i dati affidabili.</h1>
+      <p style="font-size:1.1rem; color:var(--text-secondary); margin-bottom:1.25rem;">
+        Mi sono laureato in ingegneria informatica al Politecnico di Milano nel 1993 e lavoro
+        nell'Information Technology dall'anno successivo. Dal 1999 mi sono specializzato sui software
+        IBM Cognos, arrivando a essere, dal 2007, docente ufficiale IBM per i corsi Cognos in Italia —
+        un ruolo che ho mantenuto per quasi vent'anni.
+      </p>
+      <p style="font-size:1.1rem; color:var(--text-secondary);">
+        Negli ultimi anni ho ampliato la specializzazione a Power BI e, più di recente, all'intelligenza
+        artificiale applicata al mondo BI: dalla certificazione AI-900 al ruolo di Microsoft Certified
+        Trainer, fino alla certificazione AI-103. La logica è sempre la stessa che applicavo nel 1999:
+        prima capire davvero come funziona uno strumento, poi insegnarlo, poi usarlo sul campo.
+      </p>
+    </div>
+  </section>
+
+  <hr class="hairline" />
+
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">Percorso</p>
+      <h2 style="margin-bottom:2rem;">Cronologia</h2>
+      <div style="display:grid; gap:0;">
+        {timeline.map((item, i) => (
+          <div style={`display:grid; grid-template-columns:90px 1fr; gap:1.5rem; padding:1rem 0; ${i < timeline.length - 1 ? 'border-bottom:0.5px solid var(--line);' : ''}`}>
+            <span class="mono" style="color:var(--signal-blue); font-size:0.95rem;">{item.year}</span>
+            <span style="color:var(--text-secondary);">{item.text}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section--ink section">
+    <div class="wrap" style="text-align:center;">
+      <h2>Vuoi vedere le certificazioni nel dettaglio?</h2>
+      <div style="margin-top:1.5rem;">
+        <a class="btn btn--solid" href="/certificazioni">Vai alle certificazioni</a>
+      </div>
+    </div>
+  </section>
+</Base>

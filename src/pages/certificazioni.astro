@@ -1,0 +1,52 @@
+---
+import Base from '../layouts/Base.astro';
+
+const certs = [
+  { code: 'IBM Cognos ×7', issuer: 'IBM', area: 'Business intelligence', status: 'Conseguita' },
+  { code: 'Tableau ×2', issuer: 'Tableau / Salesforce', area: 'Data visualization', status: 'Conseguita' },
+  { code: 'PL-300', issuer: 'Microsoft', area: 'Power BI Data Analyst', status: 'Conseguita' },
+  { code: 'AI-900', issuer: 'Microsoft', area: 'AI fundamentals', status: 'Conseguita' },
+  { code: 'MCT', issuer: 'Microsoft', area: 'Microsoft Certified Trainer', status: 'Attiva' },
+  { code: 'AI-103', issuer: 'Microsoft', area: 'AI Application Engineering', status: 'In corso' }
+];
+---
+
+<Base
+  title="Certificazioni — Pietro Noli"
+  description="11 certificazioni: 7 IBM Cognos, 2 Tableau, PL-300, AI-900, Microsoft Certified Trainer, in arrivo AI-103."
+>
+  <section class="section">
+    <div class="wrap" style="max-width:760px;">
+      <p class="eyebrow">Certificazioni</p>
+      <h1>11 certificazioni, in 27 anni.</h1>
+      <p style="margin-top:1rem; color:var(--text-secondary); font-size:1.1rem;">
+        Ogni certificazione che ho conseguito è diventata, in parallelo, materiale di un corso che ho
+        poi erogato — è il modo in cui verifico di aver capito davvero uno strumento, non solo di
+        averlo superato a un esame.
+      </p>
+    </div>
+  </section>
+
+  <hr class="hairline" />
+
+  <section class="section">
+    <div class="wrap">
+      <div class="panel" style="padding:0; overflow:hidden;">
+        <div class="mono" style="display:grid; grid-template-columns:1.4fr 1.2fr 1.4fr 1fr; gap:1rem; padding:0.9rem var(--space-md); font-size:0.78rem; color:var(--text-secondary); border-bottom:0.5px solid var(--line);">
+          <span>Certificazione</span>
+          <span>Ente</span>
+          <span>Area</span>
+          <span>Stato</span>
+        </div>
+        {certs.map((c, i) => (
+          <div style={`display:grid; grid-template-columns:1.4fr 1.2fr 1.4fr 1fr; gap:1rem; padding:0.9rem var(--space-md); font-size:0.92rem; align-items:center; ${i < certs.length - 1 ? 'border-bottom:0.5px solid var(--line);' : ''}`}>
+            <span style="font-weight:500;">{c.code}</span>
+            <span style="color:var(--text-secondary);">{c.issuer}</span>
+            <span style="color:var(--text-secondary);">{c.area}</span>
+            <span class="mono" style={`font-size:0.78rem; color:${c.status === 'In corso' ? 'var(--signal-amber)' : 'var(--signal-blue)'};`}>{c.status}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

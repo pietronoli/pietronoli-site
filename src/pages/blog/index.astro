@@ -1,0 +1,41 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const formatter = new Intl.DateTimeFormat('it-IT', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<Base
+  title="Blog — Pietro Noli"
+  description="Note pratiche su business intelligence e AI aziendale, dal campo."
+>
+  <section class="section">
+    <div class="wrap" style="max-width:760px;">
+      <p class="eyebrow">Blog</p>
+      <h1>Note dal campo, su BI e AI.</h1>
+    </div>
+  </section>
+
+  <hr class="hairline" />
+
+  <section class="section">
+    <div class="wrap" style="display:grid; gap:0;">
+      {posts.map((post, i) => (
+        <a
+          href={`/blog/${post.slug}`}
+          style={`display:block; text-decoration:none; color:inherit; padding:1.5rem 0; ${i < posts.length - 1 ? 'border-bottom:0.5px solid var(--line);' : ''}`}
+        >
+          <p class="mono" style="font-size:0.8rem; color:var(--signal-blue); margin-bottom:0.4rem;">
+            {formatter.format(post.data.pubDate)}
+          </p>
+          <h3 style="margin-bottom:0.4rem;">{post.data.title}</h3>
+          <p style="color:var(--text-secondary); font-size:0.95rem;">{post.data.description}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+</Base>

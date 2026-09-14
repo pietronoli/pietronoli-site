@@ -1,0 +1,104 @@
+---
+import '../styles/tokens.css';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+
+const nav = [
+  { href: '/chi-sono', label: 'Chi sono' },
+  { href: '/servizi', label: 'Servizi' },
+  { href: '/certificazioni', label: 'Certificazioni' },
+  { href: '/case-studies', label: 'Case studies' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/contatti', label: 'Contatti' }
+];
+
+const personLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Pietro Noli',
+  jobTitle: 'Business Intelligence & AI Consultant, Microsoft Certified Trainer',
+  url: 'https://www.pietronoli.it',
+  sameAs: ['https://www.linkedin.com/in/pietronoli'],
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Milano',
+    addressCountry: 'IT'
+  }
+};
+---
+
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="canonical" href={canonical} />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonical} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script type="application/ld+json" set:html={JSON.stringify(personLd)} />
+</head>
+<body>
+  <a class="skip-link" href="#main">Vai al contenuto</a>
+
+  <header class="wrap" style="display:flex; align-items:center; justify-content:space-between; padding-top:1.5rem; padding-bottom:1.5rem;">
+    <a href="/" style="display:flex; align-items:center; gap:0.6rem; text-decoration:none; color:var(--ink);">
+      <span class="mono" style="width:34px; height:34px; border:0.5px solid var(--ink); border-radius:var(--radius); display:flex; align-items:center; justify-content:center; font-size:0.85rem; font-weight:500;">PN</span>
+      <span style="font-weight:600; font-size:1.02rem;">Pietro Noli</span>
+    </a>
+    <nav aria-label="Navigazione principale">
+      <ul style="list-style:none; display:flex; gap:1.6rem; margin:0; padding:0; font-size:0.95rem;">
+        {nav.map((item) => (
+          <li><a href={item.href} style="text-decoration:none; color:var(--text-secondary);">{item.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+  </header>
+  <hr class="hairline" />
+
+  <main id="main">
+    <slot />
+  </main>
+
+  <footer class="section--ink">
+    <div class="wrap" style="display:grid; gap:2rem;">
+      <div class="grid grid--3" style="align-items:start;">
+        <div>
+          <p style="font-weight:600; margin-bottom:0.5rem;">Pietro Noli</p>
+          <p style="color:var(--text-on-ink-secondary); font-size:0.92rem;">Business intelligence & AI consultant.<br />Microsoft Certified Trainer. Milano, Italia.</p>
+        </div>
+        <div>
+          <p class="eyebrow">Contatti</p>
+          <p style="font-size:0.92rem;">
+            <a href="mailto:pietro.noli@fastwebnet.it" style="text-decoration:none;">pietro.noli@fastwebnet.it</a><br />
+            <a href="tel:+393355659346" style="text-decoration:none;">+39 335 5659 346</a><br />
+            <a href="https://www.linkedin.com/in/pietronoli" style="text-decoration:none;">linkedin.com/in/pietronoli</a>
+          </p>
+        </div>
+        <div>
+          <p class="eyebrow">Sito</p>
+          <p style="font-size:0.92rem;">
+            <a href="/servizi" style="text-decoration:none;">Servizi</a><br />
+            <a href="/blog" style="text-decoration:none;">Blog</a><br />
+            <a href="/contatti" style="text-decoration:none;">Contatti</a>
+          </p>
+        </div>
+      </div>
+      <p style="color:var(--text-on-ink-secondary); font-size:0.8rem;">© {new Date().getFullYear()} Pietro Noli. P.IVA su richiesta.</p>
+    </div>
+  </footer>
+</body>
+</html>
