@@ -3,24 +3,40 @@ import Base from '../layouts/Base.astro';
 
 const cases = [
   {
-    client: 'Gruppo bancario',
-    problem: 'Reportistica direzionale prodotta manualmente da più fonti, con frequenti errori di riconciliazione.',
-    solution: 'Migrazione a un modello BI centralizzato su IBM Cognos, con automazione dei flussi di consolidamento.',
-    result: 'Tempi di produzione dei report ridotti del 40%, errori di riconciliazione azzerati.'
+    client: 'Unicredit Real Estate S.c.p.A.',
+    sector: 'Immobiliare',
+    problem: 'Gestione delle informazioni sugli immobili tramite l\'applicazione IBM Maximo Asset Management, priva di una reportistica strutturata.',
+    solution: 'Creazione e manutenzione di oltre 400 report IBM Cognos dedicati, a Milano e Roma.',
+    result: 'Più di 290 giornate di lavoro, da febbraio 2014 a ottobre 2016.'
   },
   {
-    client: 'Azienda manifatturiera',
-    problem: 'Team BI interno bloccato su un progetto Power BI con performance insufficienti in produzione.',
-    solution: 'Assessment tecnico, tuning del modello semantico e ridisegno delle misure DAX critiche.',
-    result: 'Tempi di caricamento dashboard ridotti dell\'ordine di 5 volte, adozione interna raddoppiata.'
+    client: 'Samsung Electronics Italia S.p.A.',
+    sector: 'Elettronica di consumo ed elettrodomestici',
+    problem: 'Dati aziendali di billing, budget, stock, ordini, consegne e marketing dispersi su fonti separate.',
+    solution: 'Creazione di un ambiente di system integration & reporting con data warehouse e Cognos BI 8, integrato con Cognos Planning.',
+    result: 'Più di 110 giornate di lavoro, da settembre 2006 a ottobre 2007.'
   },
   {
-    client: 'System integrator internazionale',
-    problem: 'Necessità di formare rapidamente un team distribuito su più paesi sui moduli IBM Cognos.',
-    solution: 'Percorso di formazione certificata erogato in italiano e inglese, in presenza e da remoto.',
-    result: 'Team certificato in meno di due mesi, autonomo su progetti cliente successivi.'
+    client: 'Mapa Spontex Italia S.p.A.',
+    sector: 'Prodotti per la pulizia della casa',
+    problem: 'Analisi dei dati di vendita e della contrattualistica aziendale senza un ambiente OLAP dedicato.',
+    solution: 'Analisi e implementazione di reportistica aziendale OLAP a Pogliano Milanese.',
+    result: 'Più di 230 giornate di lavoro, da giugno 2008 a ottobre 2016.'
+  },
+  {
+    client: 'Abbott S.r.l.',
+    sector: 'Ricerca, produzione e commercializzazione di farmaci',
+    problem: 'Nessun ambiente di analisi delle statistiche di vendita e pianificazione prodotti per una rete di oltre 700 venditori.',
+    solution: 'Creazione dell\'ambiente di analisi e reportistica, con attività di implementazione, delivery, supporto e training.',
+    result: 'Più di 90 giornate di lavoro, da novembre 2001 a settembre 2002.'
   }
 ];
+
+const testimonial = {
+  quote: 'Ho conosciuto Pietro 8 anni fa e lo ricordo bene: la sua profonda conoscenza tecnica, le sue competenze IT e la sua esperienza lo hanno reso, e lo rendono ancora, un partner inestimabile nello sviluppo dei progetti, specialmente quando i tempi sono stretti.',
+  author: 'Filippo Fontana',
+  role: 'Senior BI Consultant, Cegeka Italia'
+};
 ---
 
 <Base
@@ -44,7 +60,10 @@ const cases = [
     <div class="wrap" style="display:grid; gap:1.5rem;">
       {cases.map((c) => (
         <div class="panel">
-          <p class="eyebrow">{c.client}</p>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:0.5rem;">
+            <p style="font-weight:600; font-size:1.05rem;">{c.client}</p>
+            <p class="mono" style="font-size:0.78rem; color:var(--text-secondary);">{c.sector}</p>
+          </div>
           <div class="grid grid--3" style="margin-top:0.75rem;">
             <div>
               <p class="mono" style="font-size:0.78rem; color:var(--text-secondary); margin-bottom:0.4rem;">Problema</p>
@@ -61,6 +80,17 @@ const cases = [
           </div>
         </div>
       ))}
+    </div>
+  </section>
+
+  <hr class="hairline" />
+
+  <section class="section">
+    <div class="wrap panel" style="max-width:760px;">
+      <p style="font-size:1.15rem; font-style:italic; color:var(--text-secondary); margin-bottom:1rem;">
+        «{testimonial.quote}»
+      </p>
+      <p class="mono" style="font-size:0.85rem;">{testimonial.author} — {testimonial.role}</p>
     </div>
   </section>
 </Base>
